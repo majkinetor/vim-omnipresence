@@ -7,6 +7,7 @@ Launch_vim:
     fname := GetNewFileName()
     x := clipboardall
     Send, ^a^c
+    ClipWait, 1
     FileAppend, %clipboard%, %fname%
     RunWait %gVimPath% %gVimOptions% -- "%fname%"
     FileRead, clipboard, %fname%
@@ -20,7 +21,7 @@ SetParams() {
     gHotKey       := "F12"
     gRunOnStartup := true
     gVimPath     := "C:\Program Files (x86)\vim\vim74\gvim.exe"
-    gVimOptions   := "+$|startinsert!" 
+    gVimOptions   := "+$|startinsert!"
 }
 
 GetNewFileName() {
