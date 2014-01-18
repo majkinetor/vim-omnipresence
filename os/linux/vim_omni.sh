@@ -4,7 +4,7 @@
 #   Ubuntu/Debian : sudo apt-get install xdotool xsel
 #   RH            : yum install xdotool xsel
 #   OpenSuse      : zypper install xdotool xsel
-#
+#   Mac           : sudo port install xdotool
 #   For hotkey    : xkeybind
 #                    "vim_omni"
 #                       Mod2 + F12
