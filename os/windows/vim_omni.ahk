@@ -1,7 +1,11 @@
 #SingleInstance, force
     SetParams()
-    Install()
+    TryInstall()
+
     Hotkey, %gHotKey%, Launch_vim
+
+    Menu, Tray, Icon, vim.ico
+    Menu, Tray, Tip, Vim hotkey launcher (press %gHotKey%).`nInstalled by vim plugin vim-omnipresence.
 return
 
 Launch_vim:
@@ -20,15 +24,10 @@ return
 SetParams() {
     global
 
-    gHotKey       := "F11"
+    gHotKey       := "F12"
     gRunOnStartup := true
-    gVimOptions   := "+$|set ff=dos|startinsert!"
-
-
-    RegRead, gVimPath, HKEY_CURRENT_USER, Software\Classes\vim_auto_file\shell\open\command
-    if ErrorLevel
-         gVimPath := "C:\Program Files (x86)\vim\vim74\gvim.exe"
-    else gVimPath := SubStr(gVimPath, 2, InStr(gVimPath, ".exe")+2)
+    gVimOptions   := "+$|startinsert!"
+    gVimPath := "C:\Program Files (x86)\vim\vim74\gvim.exe"
 }
 
 GetNewFileName() {
@@ -36,10 +35,11 @@ GetNewFileName() {
     return TEMP . "\mm_vim_aw" . time
 }
 
-Install() {
+TryInstall() {
     lnk = %A_Startup%\%A_ScriptName%.lnk
     if !FileExist(lnk)
         FileCreateShortcut, %A_ScriptFullPath%, %lnk% , %A_ScriptDir%
+   
    ;Filedelete, %A_Startup%\%A_ScriptName%.lnk
 }
 
