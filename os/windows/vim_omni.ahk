@@ -25,11 +25,10 @@ SetParams() {
    local config, pf 
 
     config := A_ScriptDir . "\..\..\config.ini"
-    pf := A_ProgramFiles . (A_PtrSize=8 ? " (x86)" : "")
 
     g_vimoptions := "+$|startinsert!"
     g_hotkey     := "F12"
-    g_path       := pf "\vim\vim74\gvim.exe"
+    g_path       := A_ProgramFiles "\vim\vim74\gvim.exe"
 
     IniRead, g_hotkey,     %config%, config, hotkey,     %g_hotkey%
     IniRead, g_vimoptions, %config%, config, vimoptions, %g_vimoptions%
