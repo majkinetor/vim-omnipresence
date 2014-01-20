@@ -7,7 +7,7 @@ let s:AhkScript = shellescape(s:RootDir . '/os/windows/vim_omni.ahk')
 let s:config    = s:RootDir . '/Config.ini'
 
 fu! s:run_ahk()
-    sil exe  "!start " . s:Ahk . ' ' . s:AhkScript 
+   sil exe  '!start ' . s:Ahk . ' ' . s:AhkScript
 endf
 
 fu! s:config_update()
@@ -37,7 +37,6 @@ endfu
 
 fu! omnipresence#ensure_running()
     call s:config_update()
-
     if has('win32')
         call s:run_ahk()
     en

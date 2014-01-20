@@ -1,4 +1,4 @@
-#SingleInstance, force
+#SingleInstance, ignore     ;strange: if you change this to force, RunWait gvim doesn't return ever...
     SetParams()
     TryInstall()
 
