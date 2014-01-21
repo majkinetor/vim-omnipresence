@@ -43,7 +43,7 @@ Launch_vim:
     FileRead, clipboard, %fname%
     Send, ^v
     clipboard := x
-    FileDelete, %fname%     ;delete for now, maybe save later
+    ;FileDelete, %fname%     ;delete for now, maybe save later
 return
 
 GetParams() {
@@ -51,7 +51,7 @@ GetParams() {
 
     ; Default values
     g_config     := A_ScriptDir . "\..\..\config.ini"
-    g_vimoptions  = "+set ff=dos" "+$|startinsert!"
+    g_vimoptions  = "+set ff=dos" "+$" "+startinsert!"
     g_hotkey     := "F12"
     g_path       := A_ProgramFiles "\vim\vim74\gvim.exe"
 
