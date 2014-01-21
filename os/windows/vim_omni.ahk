@@ -53,6 +53,6 @@ GetNewFileName() {
 TryInstall() {
     lnk = %A_Startup%\%A_ScriptName%.lnk
     if !FileExist(lnk)
-        FileCreateShortcut, %A_ScriptFullPath%, %lnk% , %A_ScriptDir%
+        FileCreateShortcut, %A_ScriptDir%\AutoHotkey.exe, %lnk% , %A_ScriptDir%, %A_ScriptFullPath%
 }
 
