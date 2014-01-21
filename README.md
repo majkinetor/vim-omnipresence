@@ -17,4 +17,6 @@ This vim plugin creates hotkey to launch vim for any common operating system edi
 ## Related work
 
 * [cknadler / vim-anywhere](https://github.com/cknadler/vim-anywhere)
-* Windows only: [Edit everywhere with vim](http://www.autohotkey.com/board/topic/78526-edit-everywhere-with-vim/)
+* Windows
+    * [Bring vim's key bindings to the Windows desktop](https://github.com/mihaifm/vim.ahk)
+    * Windows only: [Edit everywhere with vim](http://www.autohotkey.com/board/topic/78526-edit-everywhere-with-vim/)
