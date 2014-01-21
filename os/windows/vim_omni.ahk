@@ -1,10 +1,9 @@
-#persistent
-#Singleinstance, ignore     ;strange: if you change this to force, RunWait gvim doesn't return ever...
+#Persistent
+#SingleInstance, ignore     ;strange: if you change this to force, RunWait gvim doesn't return ever...
     GetParams()
     if (g_uninstall)
          Uninstall()
     else Install()
-
 
     g_traytip = Vim hotkey launcher (press %g_HotKey%).`nInstalled by vim plugin vim-omnipresence.
     if (!g_disabled)
@@ -20,7 +19,7 @@ return
 
 CheckConfig:
     FileGetTime, _, %g_config%, M
-    if ( _ == g_cfgTime)
+    if (_== g_cfgTime)
         return
     Reload
 return
@@ -37,13 +36,18 @@ Launch_vim:
     RunWait %g_path% %g_vimoptions% -- "%fname%"
     FileGetTime, ftime_post, %fname%, M
     if ( ftime_pre == ftime_post )
-       return  
+       return
 
+    FileRead, _, %fname%
+    FileDelete, %fname%               ; delete for now, maybe save later
+    _ := RegExReplace(_, "`r`n$", "") ; remove ending new line because FileRead adds one
+
+    clipboard := _
     WinActivate, ahk_id %g_activeHwnd%
-    FileRead, clipboard, %fname%
+    WinWaitActive, ahk_id %g_activeHwnd%
     Send, ^v
+
     clipboard := x
-    ;FileDelete, %fname%     ;delete for now, maybe save later
 return
 
 GetParams() {
