@@ -27,27 +27,28 @@ return
 Launch_vim:
     g_activeHwnd := WinExist("A")
     fname := GetNewFileName()
-    x := clipboardall
+    saved_clipboard := clipboard
     Send, ^a^c
     ClipWait, 1
+    content := (clipboard == saved_clipboard) ?  "" : clipboard
 
-    FileAppend, %clipboard%, %fname%
+    FileAppend, %content%, %fname%
     FileGetTime, ftime_pre, %fname%, M
     RunWait %g_path% %g_vimoptions% -- "%fname%"
     FileGetTime, ftime_post, %fname%, M
     if ( ftime_pre == ftime_post )
        return
 
-    FileRead, _, %fname%
-    FileDelete, %fname%               ; delete for now, maybe save later
-    _ := RegExReplace(_, "`r`n$", "") ; remove ending new line because FileRead adds one
+    FileRead, content, %fname%
+    FileDelete, %fname%                           ; delete for now, maybe save later
+    content := RegExReplace(content, "`r`n$", "") ; remove ending new line because FileRead adds one
 
-    clipboard := _
+    clipboard := content
     WinActivate, ahk_id %g_activeHwnd%
     WinWaitActive, ahk_id %g_activeHwnd%
     Send, ^v
 
-    clipboard := x
+    clipboard := saved_clipboard
 return
 
 GetParams() {
