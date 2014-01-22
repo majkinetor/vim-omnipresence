@@ -30,7 +30,7 @@ Launch_vim:
     saved_clipboard := clipboard
     Send, ^a^c
     ClipWait, 1
-    content := (clipboard == saved_clipboard) ?  "" : clipboard
+    content := clipboard
 
     FileAppend, %content%, %fname%
     FileGetTime, ftime_pre, %fname%, M
@@ -42,8 +42,8 @@ Launch_vim:
     FileRead, content, %fname%
     FileDelete, %fname%                           ; delete for now, maybe save later
     content := RegExReplace(content, "`r`n$", "") ; remove ending new line because FileRead adds one
-
     clipboard := content
+
     WinActivate, ahk_id %g_activeHwnd%
     WinWaitActive, ahk_id %g_activeHwnd%
     Send, ^v
