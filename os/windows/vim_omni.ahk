@@ -32,7 +32,7 @@ Launch_vim:
     ClipWait, 1
     content := clipboard
 
-    FileAppend, %content%, %fname%
+    FileAppend, %content%, %fname%, UTF-8
     FileGetTime, ftime_pre, %fname%, M
     RunWait %g_path% %g_vimoptions% -- "%fname%"
     FileGetTime, ftime_post, %fname%, M
@@ -57,6 +57,7 @@ GetParams() {
     ; Default values
     g_config     := A_ScriptDir . "\..\..\config.ini"
     g_vimoptions  = "+set ff=dos spell" "+$" "+startinsert!"
+    g_vimoptions  = "+set ff=dos" "+$"
     g_hotkey     := "F12"
     g_path       := A_ProgramFiles "\vim\vim74\gvim.exe"
 
