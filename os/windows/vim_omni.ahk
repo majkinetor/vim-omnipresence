@@ -56,8 +56,8 @@ GetParams() {
 
     ; Default values
     g_config     := A_ScriptDir . "\..\..\config.ini"
-    g_vimoptions  = "+set ff=dos spell" "+$" "+startinsert!"
-    g_vimoptions  = "+set ff=dos" "+$"
+    g_vimoptions  = "+set ff=dos fenc=utf-8 spell" "+$" "+startinsert!"
+    g_vimoptions  = "+set ff=dos fenc=utf-8" "+$"
     g_hotkey     := "F12"
     g_path       := A_ProgramFiles "\vim\vim74\gvim.exe"
 
